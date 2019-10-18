@@ -4,6 +4,19 @@
 	"description": "This extension help you to identify color in dart file.",
 	"version": "0.0.1",
 	"publisher": "Circle Code Solution",
+	"keywords": ["fullter","dart","color","andriod","ios"],
+	"author": {
+		"name": "Nilesh Chavan"
+	},
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#356bbc",
+		"theme": "dark"
+	  },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer.git"
+	  },
 	"engines": {
 		"vscode": "^1.39.0"
 	},
@@ -28,6 +41,7 @@
 	"contributes": {
 		"commands": []
 	},
+	"homepage": "https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/blob/master/README.md",
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
