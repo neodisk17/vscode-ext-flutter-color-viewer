@@ -23,13 +23,13 @@ class FlutterColorShow implements DocumentColorProvider {
         vw.setUint32(0, parseInt(hex, 16), false);
         var arrByte = new Uint8Array(arrBuff);
 
-        return {r:arrByte[1],g: arrByte[2],b: arrByte[3]};
+        return {r:arrByte[1],g: arrByte[2],b: arrByte[3],o:arrByte[0]};
     }
     provideDocumentColors(document: TextDocument, token: CancellationToken): ProviderResult<ColorInformation[]> {
         let colorArr: ColorInformation[] = [];
         let sourceCode = document.getText();
         const sourceCodeArr = sourceCode.split('\n');
-        let regex = /(0xFF[a-f0-9A-F]{6})/;
+        let regex = /(0x[a-f0-9A-F]{8})/;
         for (let line = 0; line < sourceCodeArr.length; line++) {
             let match = sourceCodeArr[line].match(regex);
 
@@ -39,7 +39,7 @@ class FlutterColorShow implements DocumentColorProvider {
                     new Position(line, match.index + match[1].length)
                 );
                 var rgbColor=this.hexToRgbNew(match[1]);
-                let colorCode = new ColorInformation(range, new Color(rgbColor.r/255, rgbColor.g/255, rgbColor.b/255, 1));
+                let colorCode = new ColorInformation(range, new Color(rgbColor.r/255, rgbColor.g/255, rgbColor.b/255, rgbColor.o/255));
 
                 colorArr.push(colorCode);
             }

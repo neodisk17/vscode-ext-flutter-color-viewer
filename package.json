@@ -3,7 +3,7 @@
 	"displayName": "Flutter Color",
 	"description": "This extension help you to identify color in dart file.",
 	"version": "0.0.1",
-	"publisher": "Circle-Code-Solution",
+	"publisher": "circlecodesolution",
 	"keywords": ["fullter","dart","color","andriod","ios"],
 	"author": {
 		"name": "Nilesh Chavan"
@@ -60,6 +60,7 @@
 		"typescript": "^3.3.1",
 		"vscode-test": "^1.2.0",
 		"webpack": "^4.41.2",
-		"webpack-cli": "^3.3.9"
+		"webpack-cli": "^3.3.9",
+		"serialize-javascript": ">=2.1.1"
 	}
 }
