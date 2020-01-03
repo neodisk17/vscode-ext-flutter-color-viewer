@@ -51,13 +51,21 @@ class FlutterColorShow implements DocumentColorProvider {
         let colorObj={
             red:0,
             green:0,
-            blue:0
+            blue:0,
+            alpha:0,
         };
         colorObj.red=color.red*255;
         colorObj.green=color.green*255;
         colorObj.blue=color.blue*255;
-        let colorLabel=String(this.rgbToHex(colorObj.red)) +String(this.rgbToHex(colorObj.green)) +String(this.rgbToHex(colorObj.blue)); 
-        return [new ColorPresentation('0xFF'+colorLabel.toLocaleUpperCase())];
+        colorObj.alpha=Math.round(color.alpha*255);
+        console.dir(colorObj)
+        var s1=String(this.rgbToHex(colorObj.red))
+        var s2=String(this.rgbToHex(colorObj.green))
+        var s3=String(this.rgbToHex(colorObj.blue))
+        var s4=String(this.rgbToHex(colorObj.alpha))
+        console.log(s1,s2,s3,s4)
+        let colorLabel=String(this.rgbToHex(colorObj.alpha))+String(this.rgbToHex(colorObj.red)) +String(this.rgbToHex(colorObj.green)) +String(this.rgbToHex(colorObj.blue)); 
+        return [new ColorPresentation('0x'+colorLabel.toLocaleUpperCase())];
         throw new Error("Method not implemented.");
     }
 }
