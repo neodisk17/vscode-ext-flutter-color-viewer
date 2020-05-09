@@ -6,12 +6,12 @@
 
 ### Without Fultter Color
 
-![Without Flutter Color](./images/without-plugin.jpg)
+![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin.jpg)
 
 ### With Fultter Color
 
-![With Flutter Color](./images/with-plugin.jpg)
+![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin.jpg)
 
 ## Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
-### Made with ( :heart: ) by CCS
+### Made with ( ❤ ) by CCS
