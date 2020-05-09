@@ -1,10 +1,10 @@
 {
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
-	"description": "This extension help you to identify color in dart file.",
-	"version": "0.0.6",
+	"description": "This plugin help you to easily visualize the color.",
+	"version": "0.0.7",
 	"publisher": "circlecodesolution",
-	"keywords": ["fullter","dart","color","andriod","ios"],
+	"keywords": ["futlter","dart","color","andriod","ios"],
 	"author": {
 		"name": "Nilesh Chavan"
 	},
