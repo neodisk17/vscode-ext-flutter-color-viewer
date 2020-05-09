@@ -12,4 +12,4 @@
 
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
-### Made with ( ❤ ) by CCS [CCS](http://circle.codesolution.in)
+### Made with ( ❤ ) by [CCS](http://circle.codesolution.in)
