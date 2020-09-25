@@ -61,6 +61,6 @@
 		"vscode-test": "^1.2.0",
 		"webpack": "^4.41.2",
 		"webpack-cli": "^3.3.9",
-		"serialize-javascript": ">=2.1.1"
+		"serialize-javascript": ">=3.1.0"
 	}
 }
