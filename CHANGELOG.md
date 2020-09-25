@@ -6,5 +6,4 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-- Initial release
-- Change Logo and Improve Descrption Details
+- Add color picker for json file

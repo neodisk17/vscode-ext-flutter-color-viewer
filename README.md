@@ -10,6 +10,13 @@
 
 ![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin.jpg)
 
+## Without Fultter Color (JSON file)
+
+![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin-json.jpg)
+
+## With Fultter Color (JSON file)
+
+![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin-json.jpg)
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
 ### Made with ( ❤ ) by [CCS](http://circle.codesolution.in)
