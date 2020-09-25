@@ -9,7 +9,7 @@ import {
     Range,
     Position
 } from "vscode";
-class FlutterColorShow implements DocumentColorProvider {
+class JSONColorShow implements DocumentColorProvider {
     rgbToHex(rgb: number) {
         var hex = Number(rgb).toString(16);
         if (hex.length < 2) {
@@ -18,18 +18,21 @@ class FlutterColorShow implements DocumentColorProvider {
         return hex;
     }
     hexToRgbNew(hex: string) {
+        hex = hex.replace('#', '')
         var arrBuff = new ArrayBuffer(4);
         var vw = new DataView(arrBuff);
         vw.setUint32(0, parseInt(hex, 16), false);
         var arrByte = new Uint8Array(arrBuff);
-
-        return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: arrByte[0] };
+        if (hex.length === 6) {
+            return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: 255 };
+        }
+        return { r: arrByte[0], g: arrByte[1], b: arrByte[2], o: arrByte[3] };
     }
     provideDocumentColors(document: TextDocument, token: CancellationToken): ProviderResult<ColorInformation[]> {
         let colorArr: ColorInformation[] = [];
         let sourceCode = document.getText();
         const sourceCodeArr = sourceCode.split('\n');
-        let regex = /(0x[a-f0-9A-F]{8})/;
+        let regex = /(#[a-f0-9A-F]{6,8})/;
         for (let line = 0; line < sourceCodeArr.length; line++) {
             let match = sourceCodeArr[line].match(regex);
 
@@ -62,9 +65,15 @@ class FlutterColorShow implements DocumentColorProvider {
         var s2 = String(this.rgbToHex(colorObj.green))
         var s3 = String(this.rgbToHex(colorObj.blue))
         var s4 = String(this.rgbToHex(colorObj.alpha))
-        let colorLabel = String(this.rgbToHex(colorObj.alpha)) + String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue));
-        return [new ColorPresentation('0x' + colorLabel.toLocaleUpperCase())];
+        let colorLabel
+        if (colorObj.alpha === 255) {
+            colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue)));
+        }
+        else {
+            colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue) + this.rgbToHex(colorObj.alpha)));
+        }
+        return [new ColorPresentation('#' + colorLabel.toLocaleUpperCase())];
         throw new Error("Method not implemented.");
     }
 }
-export default FlutterColorShow;
+export default JSONColorShow;
