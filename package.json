@@ -2,7 +2,7 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to easily visualize the color.",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
@@ -18,6 +18,11 @@
 	"galleryBanner": {
 		"color": "#356bbc",
 		"theme": "dark"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues",
+		"email": "codesolution.in@gmail.com"
 	},
 	"repository": {
 		"type": "git",
@@ -68,5 +73,9 @@
 		"vscode-test": "^1.2.0",
 		"webpack": "^4.44.2",
 		"webpack-cli": "^3.3.9"
+	},
+	"announcement": {
+		"onVersion": "0.1.1",
+		"message": "[FIXED] Issued resolved for ternary operator of color palette"
 	}
 }
