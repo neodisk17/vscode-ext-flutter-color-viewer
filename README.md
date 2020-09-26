@@ -25,7 +25,7 @@ Feel free to contribute. Any new ideas are accepted, if you want to contribute, 
 
 
 * ### Version 0.1.1 (26.09.2020)
-  * ***[FIXED]*** `Issued resolved for ternary operator of color palette` *[ Thanks to Diego Carvalho ]* .
+  * ***[FIXED]*** `Issued resolved for the ternary operator of color palette` *[ Thanks to Diego Carvalho ]* .
 
 * ### Version 0.1.0 (25.09.2020)
   * ***[NEW]*** Intregation of `Color palette for JSON file` *[[#6](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/6) - Thanks to [MewX](https://github.com/MewX) ]*.
