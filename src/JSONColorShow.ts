@@ -35,16 +35,17 @@ class JSONColorShow implements DocumentColorProvider {
         let regex = /(#[a-f0-9A-F]{6,8})/;
         for (let line = 0; line < sourceCodeArr.length; line++) {
             let match = sourceCodeArr[line].match(regex);
-
-            if (match !== null && match.index !== undefined) {
+            while (match !== null && match.index !== undefined) {
                 let range = new Range(
                     new Position(line, match.index),
                     new Position(line, match.index + match[1].length)
                 );
                 var rgbColor = this.hexToRgbNew(match[1]);
+                sourceCodeArr[line] = sourceCodeArr[line].replace(match[1], (new Array(match[1].length)).fill('*').join(''))
                 let colorCode = new ColorInformation(range, new Color(rgbColor.r / 255, rgbColor.g / 255, rgbColor.b / 255, rgbColor.o / 255));
 
                 colorArr.push(colorCode);
+                match = sourceCodeArr[line].match(regex);
             }
         }
         return colorArr;
