@@ -46,7 +46,8 @@
 		}
 	],
 	"activationEvents": [
-		"workspaceContains:**/*.dart"
+		"workspaceContains:**/*.dart",
+		"workspaceContains:**/*.json"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
