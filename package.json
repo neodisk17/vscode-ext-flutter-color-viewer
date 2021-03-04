@@ -82,6 +82,6 @@
 	},
 	"announcement": {
 		"onVersion": "1.0.0",
-		"message": "[NEW] Intregation of Color palette: supports all the languages except - CSS, LESS, SCSS."
+		"message": "[NEW] Integration  of Color palette: supports all the languages except - CSS, LESS, SCSS."
 	}
 }

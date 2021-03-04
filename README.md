@@ -25,16 +25,16 @@ Feel free to contribute. Any new ideas are accepted, if you want to contribute, 
 ## What's new ?
 
 * ### Version 1.0.0 (04.03.2021)
-  * ***[New]*** `Intregation of Color palette: supports all the languages except - CSS, LESS, SCSS.` *[[#9](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/9) - Thanks to [lr222gw](https://github.com/lr222gw) ]* *[[#10](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/10) - Thanks to [Littlegolden](https://github.com/Littlegolden) ]* .
+  * ***[New]*** `Integration of Color palette: supports all the languages except - CSS, LESS, SCSS.` *[[#9](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/9) - Thanks to [lr222gw](https://github.com/lr222gw) ]* *[[#10](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/10) - Thanks to [Littlegolden](https://github.com/Littlegolden) ]* .
 
 * ### Version 0.1.1 (26.09.2020)
   * ***[FIXED]*** `Issued resolved for the ternary operator of color palette` *[ Thanks to Diego Carvalho ]* .
 
 * ### Version 0.1.0 (25.09.2020)
-  * ***[NEW]*** Intregation of `Color palette for JSON file` *[[#6](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/6) - Thanks to [MewX](https://github.com/MewX) ]*.
+  * ***[NEW]*** Integration  of `Color palette for JSON file` *[[#6](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/6) - Thanks to [MewX](https://github.com/MewX) ]*.
 
 * ### Version 0.0.2 (03.01.2020)
-  * ***[NEW]*** Intregation of `Opacity` In `The color palette`.
+  * ***[NEW]*** Integration  of `Opacity` In `The color palette`.
 
 
 ## Changelog
