@@ -4,6 +4,7 @@
 
 ## Features
 
+![Flutter Color GIF](https://buzzyevent.in/assets/images/vscode/flutter-color.gif)
 ### Without Fultter Color
 
 ![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin.jpg)
