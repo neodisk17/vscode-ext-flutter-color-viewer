@@ -9,7 +9,7 @@ import {
     Range,
     Position
 } from "vscode";
-class JSONColorShow implements DocumentColorProvider {
+class AllColorShow implements DocumentColorProvider {
     rgbToHex(rgb: number) {
         var hex = Number(rgb).toString(16);
         if (hex.length < 2) {
@@ -29,6 +29,10 @@ class JSONColorShow implements DocumentColorProvider {
         return { r: arrByte[0], g: arrByte[1], b: arrByte[2], o: arrByte[3] };
     }
     provideDocumentColors(document: TextDocument, token: CancellationToken): ProviderResult<ColorInformation[]> {
+        let list = ['dart','css','less','scss']
+        if(list.indexOf(document.languageId) > -1){
+            return
+        }
         let colorArr: ColorInformation[] = [];
         let sourceCode = document.getText();
         const sourceCodeArr = sourceCode.split('\n');
@@ -77,4 +81,4 @@ class JSONColorShow implements DocumentColorProvider {
         throw new Error("Method not implemented.");
     }
 }
-export default JSONColorShow;
+export default AllColorShow;

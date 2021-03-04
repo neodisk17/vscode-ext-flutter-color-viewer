@@ -23,6 +23,8 @@ Feel free to contribute. Any new ideas are accepted, if you want to contribute, 
 
 ## What's new ?
 
+* ### Version 1.0.0 (04.03.2021)
+  * ***[New]*** `Intregation of Color palette: supports all the languages except - CSS, LESS, SCSS.` *[[#9](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/9) - Thanks to [lr222gw](https://github.com/lr222gw) ]* *[[#10](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/10) - Thanks to [Littlegolden](https://github.com/Littlegolden) ]* .
 
 * ### Version 0.1.1 (26.09.2020)
   * ***[FIXED]*** `Issued resolved for the ternary operator of color palette` *[ Thanks to Diego Carvalho ]* .

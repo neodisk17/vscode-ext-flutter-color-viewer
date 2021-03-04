@@ -2,7 +2,7 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to easily visualize the color.",
-	"version": "0.1.3",
+	"version": "1.0.0",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
@@ -38,16 +38,21 @@
 		{
 			"id": "dart",
 			"extensions": [
-				".dart"
+				".dart",
+				".cs",
+				".js",
+				".json"
 			],
 			"aliases": [
-				"dart"
+				"dart",
+				"cs",
+				"js",
+				"json"
 			]
 		}
 	],
 	"activationEvents": [
-		"workspaceContains:**/*.dart",
-		"workspaceContains:**/*.json"
+		"workspaceContains:**/*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -76,7 +81,7 @@
 		"webpack-cli": "^3.3.9"
 	},
 	"announcement": {
-		"onVersion": "0.1.1",
-		"message": "[FIXED] Issued resolved for ternary operator of color palette"
+		"onVersion": "1.0.0",
+		"message": "[NEW] Intregation of Color palette: supports all the languages except - CSS, LESS, SCSS."
 	}
 }

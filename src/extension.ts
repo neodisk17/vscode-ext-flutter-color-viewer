@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import FlutterColorShow from "./FlutterColorShow";
-import JSONColorShow from "./JSONColorShow";
+import AllColorShow from "./AllColorShow";
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -20,18 +20,18 @@ export function activate(context: vscode.ExtensionContext) {
 		new FlutterColorShow()
 	);
 
-	let docJsonSelector = {
-		pattern: "**/*.json",
+	let allFileSelector = {
+		pattern: "**/*",
 	};
 
 	// Register our CodeLens provider
-	let JSONColorShowDisposable = vscode.languages.registerColorProvider(
-		docJsonSelector,
-		new JSONColorShow()
+	let AllColorShowDisposable = vscode.languages.registerColorProvider(
+		allFileSelector,
+		new AllColorShow()
 	);
 
 	context.subscriptions.push(FlutterColorShowDisposable);
-	context.subscriptions.push(JSONColorShowDisposable);
+	context.subscriptions.push(AllColorShowDisposable);
 }
 
 // this method is called when your extension is deactivated
