@@ -2,7 +2,7 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to easily visualize the color.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
@@ -81,7 +81,7 @@
 		"webpack-cli": "^3.3.9"
 	},
 	"announcement": {
-		"onVersion": "1.0.0",
+		"onVersion": "1.0.1",
 		"message": "[NEW] Integration  of Color palette: supports all the languages except - CSS, LESS, SCSS."
 	}
 }
