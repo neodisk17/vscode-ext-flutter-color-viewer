@@ -7,19 +7,19 @@
 ![Flutter Color GIF](https://buzzyevent.in/assets/images/vscode/flutter-color.gif)
 
 Gif by [Maruf Hassan](https://medium.com/@maruf.hassan) on [Medium](https://medium.com/@maruf.hassan/the-ultimate-vs-code-extensions-for-working-with-flutter-8e75232e6f98).
-### Without Fultter Color
+### Without Flutter Color
 
 ![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin.jpg)
 
-### With Fultter Color
+### With Flutter Color
 
 ![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin.jpg)
 
-### Without Fultter Color (JSON file)
+### Without Flutter Color (JSON file)
 
 ![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin-json.jpg)
 
-### With Fultter Color (JSON file)
+### With Flutter Color (JSON file)
 
 ![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin-json.jpg)
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
