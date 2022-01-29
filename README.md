@@ -13,15 +13,15 @@ Gif by [Maruf Hassan](https://medium.com/@maruf.hassan) on [Medium](https://medi
 
 ### With Flutter Color
 
-![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin.jpg)
+![With Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/with-plugin.jpg)
 
 ### Without Flutter Color (JSON file)
 
-![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin-json.jpg)
+![Without Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/without-plugin-json.jpg)
 
 ### With Flutter Color (JSON file)
 
-![With Flutter Color](https://buzzyevent.in/assets/images/vscode/with-plugin-json.jpg)
+![With Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/with-plugin-json.jpg)
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
 ## What's new ?
