@@ -78,7 +78,7 @@
 		"typescript": "^3.3.1",
 		"vscode-test": "^1.2.0",
 		"webpack": "^4.44.2",
-		"webpack-cli": "^3.3.9"
+		"webpack-cli": "^3.3.12"
 	},
 	"announcement": {
 		"onVersion": "1.0.1",
