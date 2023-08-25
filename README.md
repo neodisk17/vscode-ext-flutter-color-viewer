@@ -4,12 +4,12 @@
 
 ## Features
 
-![Flutter Color GIF](https://buzzyevent.in/assets/images/vscode/flutter-color.gif)
+![Flutter Color GIF](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/flutter-color.gif)
 
 Gif by [Maruf Hassan](https://medium.com/@maruf.hassan) on [Medium](https://medium.com/@maruf.hassan/the-ultimate-vs-code-extensions-for-working-with-flutter-8e75232e6f98).
 ### Without Flutter Color
 
-![Without Flutter Color](https://buzzyevent.in/assets/images/vscode/without-plugin.jpg)
+![Without Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/without-plugin.jpg)
 
 ### With Flutter Color
 
