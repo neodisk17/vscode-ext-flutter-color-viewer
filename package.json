@@ -2,7 +2,7 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to easily visualize the color.",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
@@ -21,12 +21,12 @@
 	},
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues",
-		"email": "codesolution.in@gmail.com"
+		"url": "https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues",
+		"email": "lk07540@gmail.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer.git"
+		"url": "https://github.com/neodisk17/vscode-ext-flutter-color-viewer"
 	},
 	"engines": {
 		"vscode": "^1.39.0"
