@@ -26,6 +26,9 @@ Feel free to contribute. Any new ideas are accepted, if you want to contribute, 
 
 ## What's new ?
 
+* ### Version 1.1.0 (25.08.2023)
+  * ***[New]*** ` updated the Readme file to show the missing images & Published the extension to openvsx (https://open-vsx.org/extension/circlecodesolution/ccs-flutter-color).`  *[[#29](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/29) - Thanks to [mrhyperbit](https://github.com/mrhyperbit) ]* .
+
 * ### Version 1.0.1 (04.03.2021)
   * ***[New]*** `Integration of Color palette: supports all the languages except - CSS, LESS, SCSS. We don't want to break the internal feature of the vscode, that's why we are not supporting on thes languages ` *[[#9](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/9) - Thanks to [lr222gw](https://github.com/lr222gw) ]* *[[#10](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/10) - Thanks to [Littlegolden](https://github.com/Littlegolden) ]* .
 

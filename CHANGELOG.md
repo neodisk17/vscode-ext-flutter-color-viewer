@@ -1,6 +1,7 @@
 # Changelog
 | Version | Date | Changelog |
 |---|---|---|
+|1.1.0 | 25.08.2023 | Added Missing Images & Published the extension to Open VSX.
 |0.1.2 | 26.09.2020 | Updated Changelog and Read me file.<br><br>Added MIT license.
 |0.1.1 | 26.09.2020 | &mdash; ***[FIXED]*** Issued resolved for the `ternary operator` of `color palette` *[ Thanks to Diego Carvalho ]* .
 |0.1.0 | 25.09.2020 | &mdash; ***[NEW]*** Integration  of `Color palette for JSON file` *[[#6](https://github.com/circlecodesolution/vscode-ext-flutter-color-viewer/issues/6) - Thanks to [MewX](https://github.com/MewX) ]*.
