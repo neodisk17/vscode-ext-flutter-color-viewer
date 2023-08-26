@@ -8,10 +8,10 @@ A user friendly plugin to help you work with ARGB Color in VS Code, for any proj
 
 # 🚀🌕 Celebrating Chandrayaan's Glorious Landing and a Promising Future! 🌌✨
 
-<center>
-<img src="https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/Chandrayaan-Soft-Landing.jpg" width="200" height="200"  />
-</center>
-<br/>
+<p align="center">
+  <img width="200" height="200" src="https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/Chandrayaan-Soft-Landing.jpg">
+</p>
+
 <br/>
 
 Dear All,<br/>
