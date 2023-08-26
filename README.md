@@ -1,6 +1,26 @@
 # Welcome to Flutter Color Show VS Code Extension
 
- A user friendly plugin to help you work with ARGB Color in VS Code, for any project. You can easily use it. It will automatically convert your ARGB Color Code and show you a color box. The size of the color box is set by VS Code and we can't change it
+A user friendly plugin to help you work with ARGB Color in VS Code, for any project. You can easily use it. It will automatically convert your ARGB Color Code and show you a color box. The size of the color box is set by VS Code and we can't change it
+<br/>
+<br/>
+
+
+
+# 🚀🌕 Celebrating Chandrayaan's Glorious Landing and a Promising Future! 🌌✨
+
+<center>
+<img src="https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/Chandrayaan-Soft-Landing.jpg" width="200" height="200"  />
+</center>
+<br/>
+<br/>
+
+Dear All,<br/>
+As we are thrilled to share the moment of Chandrayaan landing on the lunar surface, I am excited to share with you the next stages of my Plugin
+
+1. Implement Telemetry & Crash Reporting
+2. Adding test cases
+3. Refactoring if necessary
+
 
 ## Features
 
