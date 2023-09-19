@@ -1,7 +1,6 @@
 import {
     DocumentColorProvider,
     TextDocument,
-    CancellationToken,
     ProviderResult,
     Color,
     ColorPresentation,
@@ -9,6 +8,11 @@ import {
     Range,
     Position
 } from "vscode";
+import { sendTrackingEvent } from "./tracking";
+import { TelemetryEnum } from "./enum/telemetry.enum";
+import { TelemetryTypeEnum } from "./enum/telemetryType.enum";
+
+
 class AllColorShow implements DocumentColorProvider {
     rgbToHex(rgb: number) {
         var hex = Number(rgb).toString(16);
@@ -17,8 +21,9 @@ class AllColorShow implements DocumentColorProvider {
         }
         return hex;
     }
+
     hexToRgbNew(hex: string) {
-        hex = hex.replace('#', '')
+        hex = hex.replace('#', '');
         var arrBuff = new ArrayBuffer(4);
         var vw = new DataView(arrBuff);
         vw.setUint32(0, parseInt(hex, 16), false);
@@ -28,10 +33,11 @@ class AllColorShow implements DocumentColorProvider {
         }
         return { r: arrByte[0], g: arrByte[1], b: arrByte[2], o: arrByte[3] };
     }
-    provideDocumentColors(document: TextDocument, token: CancellationToken): ProviderResult<ColorInformation[]> {
-        let list = ['dart','css','less','scss']
-        if(list.indexOf(document.languageId) > -1){
-            return
+
+    provideDocumentColors(document: TextDocument): ProviderResult<ColorInformation[]> {
+        let list = ['dart', 'css', 'less', 'scss'];
+        if (list.indexOf(document.languageId) > -1) {
+            return;
         }
         let colorArr: ColorInformation[] = [];
         let sourceCode = document.getText();
@@ -45,17 +51,21 @@ class AllColorShow implements DocumentColorProvider {
                     new Position(line, match.index + match[1].length)
                 );
                 var rgbColor = this.hexToRgbNew(match[1]);
-                sourceCodeArr[line] = sourceCodeArr[line].replace(match[1], (new Array(match[1].length)).fill('*').join(''))
+                sourceCodeArr[line] = sourceCodeArr[line].replace(match[1], (new Array(match[1].length)).fill('*').join(''));
                 let colorCode = new ColorInformation(range, new Color(rgbColor.r / 255, rgbColor.g / 255, rgbColor.b / 255, rgbColor.o / 255));
 
                 colorArr.push(colorCode);
                 match = sourceCodeArr[line].match(regex);
             }
         }
+        sendTrackingEvent(TelemetryEnum.colorPickerUsed, {
+            color: colorArr[0].color,
+            colorPickerType: 'all'
+        }, TelemetryTypeEnum.editor);
         return colorArr;
-        throw new Error("Method not implemented.");
     }
-    provideColorPresentations(color: Color, context: { document: TextDocument; range: Range; }, token: CancellationToken): ProviderResult<ColorPresentation[]> {
+
+    provideColorPresentations(color: Color): ProviderResult<ColorPresentation[]> {
         let colorObj = {
             red: 0,
             green: 0,
@@ -66,11 +76,7 @@ class AllColorShow implements DocumentColorProvider {
         colorObj.green = color.green * 255;
         colorObj.blue = color.blue * 255;
         colorObj.alpha = Math.round(color.alpha * 255);
-        var s1 = String(this.rgbToHex(colorObj.red))
-        var s2 = String(this.rgbToHex(colorObj.green))
-        var s3 = String(this.rgbToHex(colorObj.blue))
-        var s4 = String(this.rgbToHex(colorObj.alpha))
-        let colorLabel
+        let colorLabel;
         if (colorObj.alpha === 255) {
             colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue)));
         }
@@ -78,7 +84,6 @@ class AllColorShow implements DocumentColorProvider {
             colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue) + this.rgbToHex(colorObj.alpha)));
         }
         return [new ColorPresentation('#' + colorLabel.toLocaleUpperCase())];
-        throw new Error("Method not implemented.");
     }
 }
 export default AllColorShow;
