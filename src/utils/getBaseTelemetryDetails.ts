@@ -1,6 +1,6 @@
 import { EXTENSION_ID } from "../constant";
 import { env, version, extensions } from 'vscode';
-import {platform, release} from 'os';
+import { platform, release } from 'os';
 
 const extension = extensions.getExtension(EXTENSION_ID);
 const operatingSystem = platform();
@@ -16,6 +16,7 @@ const getBaseTelemetryDetails = () => {
     const vsCodeVersion = version;
 
     return {
+        "$os": operatingSystem,
         operatingSystem,
         osVersion,
         userLanguage,
