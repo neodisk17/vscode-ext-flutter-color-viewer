@@ -76,7 +76,7 @@ export const sendTrackingEvent = async (trackingEvent: TelemetryEnum, data: any,
 
   try {
 
-    await fetch(`${PROXY_URL}/`, {
+    await fetch(`${PROXY_URL}`, {
       method: 'post',
       body: JSON.stringify({
         ...trackingData,
