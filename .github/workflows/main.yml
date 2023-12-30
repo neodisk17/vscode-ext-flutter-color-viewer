@@ -30,8 +30,8 @@ jobs:
       tag: ${{ env.TAG }}
       version: ${{ env.VERSION }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
@@ -48,7 +48,7 @@ jobs:
       - name: Package
         run: npx vsce package --out $PACKAGE_NAME
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: ${{ env.PACKAGE_NAME }}
           path: ${{ env.PACKAGE_NAME }}
@@ -67,8 +67,8 @@ jobs:
     needs: package
     if: github.event.inputs.publishMS == 'true'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: ${{ needs.package.outputs.packageName }}
       - name: Publish to VS marketplace
@@ -80,8 +80,8 @@ jobs:
     needs: package
     if: github.event.inputs.publishOVSX == 'true'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
         with:
           name: ${{ needs.package.outputs.packageName }}
       - name: Publish to Open VSX
@@ -93,7 +93,7 @@ jobs:
     needs: package
     if: github.event.inputs.publishGH == 'true'
     steps:
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: ${{ needs.package.outputs.packageName }}
 
