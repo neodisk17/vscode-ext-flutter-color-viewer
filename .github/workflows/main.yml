@@ -50,8 +50,8 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: $PACKAGE_NAME
-          path: ./$PACKAGE_NAME
+          name: ${{ env.PACKAGE_NAME }}
+          path: ${{ env.PACKAGE_NAME }}
           if-no-files-found: error
 
       - name: Setup tag
