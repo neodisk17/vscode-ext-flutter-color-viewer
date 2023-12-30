@@ -40,7 +40,10 @@ jobs:
         run: npm i
 
       - name: Setup package path
-        run: echo "PACKAGE_NAME=$(node -e \"console.log(require('./package.json').name + '-' + require('./package.json').version + '.vsix')\")" >> $GITHUB_ENV
+        run: |
+          PACKAGE_NAME=$(node -e "console.log(require('./package.json').name + '-' + require('./package.json').version + '.vsix')")
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
+        shell: bash
 
       - name: Package
         run: npx vsce package --out $PACKAGE_NAME
