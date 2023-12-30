@@ -1,21 +1,41 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import { ExtensionContext, extensions, languages, env } from 'vscode';
 import FlutterColorShow from "./FlutterColorShow";
 import AllColorShow from "./AllColorShow";
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+import { EXTENSION_ID } from './constant';
+import { activateTracking, sendTrackingEvent } from './tracking';
+import { TelemetryEnum } from './enum/telemetry.enum';
+import { TelemetryTypeEnum } from './enum/telemetryType.enum';
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
+
+const checkForUpgrade = (context: ExtensionContext) => {
+	const extension = extensions.getExtension(EXTENSION_ID);
+	const currentVersion = extension!.packageJSON.version;
+
+	// Retrieve the previous version from global state
+	const previousVersion = context.globalState.get('extensionVersion');
+
+	// Compare the versions
+	if (previousVersion && previousVersion !== currentVersion) {
+		sendTrackingEvent(TelemetryEnum.update, {
+			previousVersion,
+			currentVersion
+		}, TelemetryTypeEnum.base);
+	}
+
+	context.globalState.update('extensionVersion', currentVersion);
+
+};
+
+export function activate(context: ExtensionContext) {
+	activateTracking();
+
+	checkForUpgrade(context);
 
 	let docFlutterSelector = {
 		pattern: "**/*.dart"
 	};
 
-	// Register our CodeLens provider
-	let FlutterColorShowDisposable = vscode.languages.registerColorProvider(
+	let FlutterColorShowDisposable = languages.registerColorProvider(
 		docFlutterSelector,
 		new FlutterColorShow()
 	);
@@ -24,15 +44,15 @@ export function activate(context: vscode.ExtensionContext) {
 		pattern: "**/*",
 	};
 
-	// Register our CodeLens provider
-	let AllColorShowDisposable = vscode.languages.registerColorProvider(
+	let AllColorShowDisposable = languages.registerColorProvider(
 		allFileSelector,
 		new AllColorShow()
 	);
-
 	context.subscriptions.push(FlutterColorShowDisposable);
 	context.subscriptions.push(AllColorShowDisposable);
+	sendTrackingEvent(TelemetryEnum.install, {}, TelemetryTypeEnum.base);
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() { }
+export function deactivate() {
+	sendTrackingEvent(TelemetryEnum.deactivate, {}, TelemetryTypeEnum.base);
+}

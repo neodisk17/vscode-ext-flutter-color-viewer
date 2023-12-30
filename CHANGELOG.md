@@ -1,6 +1,7 @@
 # Changelog
 | Version | Date | Changelog |
 |---|---|---|
+|1.2.0 | 20.09.2023 | Added data analysis while prioritizing and safeguarding user privacy.
 |1.1.1 | 26.08.2023 | Updated Readme:- Added next stages of the Plugin.
 |1.1.0 | 25.08.2023 | Added Missing Images & Published the extension to Open VSX.
 |0.1.2 | 26.09.2020 | Updated Changelog and Read me file.<br><br>Added MIT license.
