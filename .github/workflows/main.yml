@@ -101,7 +101,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh auth login --with-token <<< "$GH_TOKEN"
           gh release create v${{ env.VERSION }} ${{ env.PACKAGE_NAME }} --title "Release v${{ env.VERSION }}"
 
 
