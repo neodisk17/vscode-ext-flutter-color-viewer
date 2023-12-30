@@ -98,14 +98,8 @@ jobs:
           name: ${{ needs.package.outputs.packageName }}
 
       - name: Create Release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: $TAG
-          release_name: Release $VERSION
-          draft: false
-          prerelease: false
+        run: gh release create v${{ env.VERSION }} ${{ env.PACKAGE_NAME }} --title "Release v${{ env.VERSION }}"
+
 
       - name: Upload assets to a Release
         uses: AButler/upload-release-assets@v2.0
