@@ -26,12 +26,12 @@ jobs:
     name: Package
     runs-on: ubuntu-latest
     outputs:
-      packageName: ${{ env.PACKAGE_NAME }}
-      tag: ${{ env.TAG }}
-      version: ${{ env.VERSION }}
+      packageName: ${{ steps.setup.outputs.packageName }}
+      tag: ${{ steps.setup-tag.outputs.tag }}
+      version: ${{ steps.setup-tag.outputs.version }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
@@ -40,26 +40,27 @@ jobs:
         run: npm i
 
       - name: Setup package path
-        run: |
-          PACKAGE_NAME=$(node -e "console.log(require('./package.json').name + '-' + require('./package.json').version + '.vsix')")
-          echo "PACKAGE_NAME=$PACKAGE_NAME" >> $GITHUB_ENV
-        shell: bash
+        id: setup
+        run: echo "::set-output name=packageName::$(node -e "console.log(require('./package.json').name + '-' + require('./package.json').version + '.vsix')")"
 
       - name: Package
-        run: npx vsce package --out $PACKAGE_NAME
+        run: |
+          npx vsce package --out ${{ steps.setup.outputs.packageName }}
 
       - uses: actions/upload-artifact@v3
         with:
-          name: ${{ env.PACKAGE_NAME }}
-          path: ${{ env.PACKAGE_NAME }}
+          name: ${{ steps.setup.outputs.packageName }}
+          path: ./${{ steps.setup.outputs.packageName }}
           if-no-files-found: error
 
       - name: Setup tag
+        id: setup-tag
         run: |
-          version=$(node -p -e "require('./package.json').version")
-          echo "TAG=release/$version" >> $GITHUB_ENV
-          echo "VERSION=$version" >> $GITHUB_ENV
-        shell: bash
+          $version = (Get-Content ./package.json -Raw | ConvertFrom-Json).version
+          Write-Host "tag: release/$version"
+          Write-Host "::set-output name=tag::release/$version"
+          Write-Host "::set-output name=version::$version"
+        shell: pwsh
 
   publishMS:
     name: Publish to VS marketplace
@@ -72,7 +73,7 @@ jobs:
         with:
           name: ${{ needs.package.outputs.packageName }}
       - name: Publish to VS marketplace
-        run: npx vsce publish --packagePath ./$PACKAGE_NAME -p ${{ secrets.VSCE_PAT }}
+        run: npx vsce publish --packagePath ./${{ needs.package.outputs.packageName }} -p ${{ secrets.VSCE_PAT }}
 
   publishOVSX:
     name: Publish to Open VSX
@@ -85,7 +86,7 @@ jobs:
         with:
           name: ${{ needs.package.outputs.packageName }}
       - name: Publish to Open VSX
-        run: npx ovsx publish ./$PACKAGE_NAME -p ${{ secrets.OVSX_PAT }}
+        run: npx ovsx publish ./${{ needs.package.outputs.packageName }} -p ${{ secrets.OVSX_PAT }}
 
   publishGH:
     name: Publish to GitHub releases
@@ -98,15 +99,19 @@ jobs:
           name: ${{ needs.package.outputs.packageName }}
 
       - name: Create Release
+        id: create-release
+        uses: actions/create-release@v1
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create v${{ env.VERSION }} ${{ env.PACKAGE_NAME }} --title "Release v${{ env.VERSION }}"
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ needs.package.outputs.tag }}
+          release_name: Release ${{ needs.package.outputs.version }}
+          draft: false
+          prerelease: false
 
       - name: Upload assets to a Release
         uses: AButler/upload-release-assets@v2.0
         with:
-          files: $PACKAGE_NAME
-          release-tag: $TAG
+          files: ${{ needs.package.outputs.packageName }}
+          release-tag: ${{ needs.package.outputs.tag }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
