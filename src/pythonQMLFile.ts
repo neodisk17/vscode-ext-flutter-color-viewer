@@ -13,7 +13,7 @@ import { TelemetryEnum } from "./enum/telemetry.enum";
 import { TelemetryTypeEnum } from "./enum/telemetryType.enum";
 
 
-class AllColorShow implements DocumentColorProvider {
+class PythonQMLShow implements DocumentColorProvider {
     rgbToHex(rgb: number) {
         var hex = Number(rgb).toString(16);
         if (hex.length < 2) {
@@ -31,17 +31,13 @@ class AllColorShow implements DocumentColorProvider {
         if (hex.length === 6) {
             return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: 255 };
         }
-        return { r: arrByte[0], g: arrByte[1], b: arrByte[2], o: arrByte[3] };
+        return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: arrByte[0] };
     }
 
     provideDocumentColors(document: TextDocument): ProviderResult<ColorInformation[]> {
-        console.log("All document color is called");
-        let list = ['dart', 'css', 'less', 'scss', 'qml'];
+        console.log("Python QML color is called");
+        let list = ['dart', 'css', 'less', 'scss'];
         if (list.indexOf(document.languageId) > -1) {
-            return;
-        }
-        const fileExtension = document.uri.fsPath.split('.').pop();
-        if(fileExtension==='qml') {
             return;
         }
         let colorArr: ColorInformation[] = [];
@@ -91,4 +87,4 @@ class AllColorShow implements DocumentColorProvider {
         return [new ColorPresentation('#' + colorLabel.toLocaleUpperCase())];
     }
 }
-export default AllColorShow;
+export default PythonQMLShow;
