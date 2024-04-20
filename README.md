@@ -4,8 +4,8 @@ A user friendly plugin to help you work with ARGB Color in VS Code, for any proj
 <br/>
 <br/>
 
-
-
+[![CodeQL](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/github-code-scanning/codeql/badge.svg?branch=master)](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/github-code-scanning/codeql)
+[![Release](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/main.yml)
 # 🚀🌕 Celebrating Chandrayaan's Glorious Landing and a Promising Future! 🌌✨
 
 <p align="center">
