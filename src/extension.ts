@@ -5,6 +5,7 @@ import { EXTENSION_ID } from './constant';
 import { activateTracking, sendTrackingEvent } from './tracking';
 import { TelemetryEnum } from './enum/telemetry.enum';
 import { TelemetryTypeEnum } from './enum/telemetryType.enum';
+import PythonQMLShow from './pythonQMLFile';
 
 
 const checkForUpgrade = (context: ExtensionContext) => {
@@ -40,6 +41,15 @@ export function activate(context: ExtensionContext) {
 		new FlutterColorShow()
 	);
 
+	let qmlSelector = {
+		pattern: "**/*.qml"
+	};
+
+	let QMLShowDisposable = languages.registerColorProvider(
+		qmlSelector,
+		new PythonQMLShow()
+	);
+
 	let allFileSelector = {
 		pattern: "**/*",
 	};
@@ -50,6 +60,7 @@ export function activate(context: ExtensionContext) {
 	);
 	context.subscriptions.push(FlutterColorShowDisposable);
 	context.subscriptions.push(AllColorShowDisposable);
+	context.subscriptions.push(QMLShowDisposable);
 	sendTrackingEvent(TelemetryEnum.install, {}, TelemetryTypeEnum.base);
 }
 
