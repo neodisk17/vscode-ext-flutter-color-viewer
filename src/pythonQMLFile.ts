@@ -82,7 +82,7 @@ class PythonQMLShow implements DocumentColorProvider {
             colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue)));
         }
         else {
-            colorLabel = String(String(this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue) + this.rgbToHex(colorObj.alpha)));
+            colorLabel = String(String(this.rgbToHex(colorObj.alpha)+this.rgbToHex(colorObj.red)) + String(this.rgbToHex(colorObj.green)) + String(this.rgbToHex(colorObj.blue)));
         }
         return [new ColorPresentation('#' + colorLabel.toLocaleUpperCase())];
     }
