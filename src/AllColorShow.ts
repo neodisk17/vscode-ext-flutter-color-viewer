@@ -35,7 +35,6 @@ class AllColorShow implements DocumentColorProvider {
     }
 
     provideDocumentColors(document: TextDocument): ProviderResult<ColorInformation[]> {
-        console.log("All document color is called");
         let list = ['dart', 'css', 'less', 'scss', 'qml'];
         if (list.indexOf(document.languageId) > -1) {
             return;
@@ -64,7 +63,7 @@ class AllColorShow implements DocumentColorProvider {
             }
         }
         sendTrackingEvent(TelemetryEnum.colorPickerUsed, {
-            color: colorArr[0].color,
+            color: colorArr[0]?.color,
             colorPickerType: 'all'
         }, TelemetryTypeEnum.editor);
         return colorArr;
