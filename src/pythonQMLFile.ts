@@ -35,7 +35,6 @@ class PythonQMLShow implements DocumentColorProvider {
     }
 
     provideDocumentColors(document: TextDocument): ProviderResult<ColorInformation[]> {
-        console.log("Python QML color is called");
         let list = ['dart', 'css', 'less', 'scss'];
         if (list.indexOf(document.languageId) > -1) {
             return;
@@ -60,7 +59,7 @@ class PythonQMLShow implements DocumentColorProvider {
             }
         }
         sendTrackingEvent(TelemetryEnum.colorPickerUsed, {
-            color: colorArr[0].color,
+            color: colorArr[0]?.color,
             colorPickerType: 'all'
         }, TelemetryTypeEnum.editor);
         return colorArr;
