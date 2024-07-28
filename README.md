@@ -9,7 +9,7 @@ A user friendly plugin to help you work with ARGB Color in VS Code, for any proj
 # 🚀🌕 Celebrating Chandrayaan's Glorious Landing and a Promising Future! 🌌✨
 
 <p align="center">
-  <img width="200" height="200" src="https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/Chandrayaan-Soft-Landing.jpg">
+  <img src="https://flutter-color.s3.ap-south-1.amazonaws.com/vikram-lander.webp">
 </p>
 
 <br/>
@@ -17,31 +17,31 @@ A user friendly plugin to help you work with ARGB Color in VS Code, for any proj
 Dear All,<br/>
 As we are thrilled to share the moment of Chandrayaan landing on the lunar surface, I am excited to share with you the next stages of my Plugin
 
-1. Implement Telemetry & Crash Reporting
+1. <del>Implement Telemetry & Crash Reporting</del>
 2. Adding test cases
 3. Refactoring if necessary
 
 
 ## Features
 
-![Flutter Color GIF](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/flutter-color.gif)
+![Flutter Color GIF](https://flutter-color.s3.ap-south-1.amazonaws.com/flutter-color.gif)
 
 Gif by [Maruf Hassan](https://medium.com/@maruf.hassan) on [Medium](https://medium.com/@maruf.hassan/the-ultimate-vs-code-extensions-for-working-with-flutter-8e75232e6f98).
 ### Without Flutter Color
 
-![Without Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/without-plugin.jpg)
+![Without Flutter Color](https://flutter-color.s3.ap-south-1.amazonaws.com/without-plugin.jpg)
 
 ### With Flutter Color
 
-![With Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/with-plugin.jpg)
+![With Flutter Color](https://flutter-color.s3.ap-south-1.amazonaws.com/with-plugin.jpg)
 
 ### Without Flutter Color (JSON file)
 
-![Without Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/without-plugin-json.jpg)
+![Without Flutter Color](https://flutter-color.s3.ap-south-1.amazonaws.com/without-plugin-json.jpg)
 
 ### With Flutter Color (JSON file)
 
-![With Flutter Color](https://flutter-color-ccs.s3.ap-south-1.amazonaws.com/with-plugin-json.jpg)
+![With Flutter Color](https://flutter-color.s3.ap-south-1.amazonaws.com/with-plugin-json.jpg)
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
 ## What's new ?
