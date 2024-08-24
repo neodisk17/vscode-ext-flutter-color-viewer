@@ -1,20 +1,10 @@
 import { env, window } from 'vscode';
 
 const getEditorTelemetryDetails = () => {
-    
-    const activeTextEditor = window.activeTextEditor;
     const { machineId, sessionId } = env;
-    let editorType = 'unknown';
+    const editorType = window.activeTextEditor?.document.languageId ?? 'unknown';
 
-    if (activeTextEditor) {
-        editorType = activeTextEditor.document.languageId;
-    }
-
-    return {
-        editorType,
-        machineId,
-        sessionId
-    };
+    return { editorType, machineId, sessionId };
 };
 
 export default getEditorTelemetryDetails;

@@ -47,9 +47,9 @@ class UnifiedColorProvider implements DocumentColorProvider {
         const sourceCodeArr = sourceCode.split('\n');
         const regex = strategy.getRegex();
 
-        for (let line = 0; line < sourceCodeArr.length; line++) {
-            this.extractColorsFromLine(line, sourceCodeArr, regex, strategy, colorArr);
-        }
+        sourceCodeArr.forEach((line, lineIndex) => {
+            this.extractColorsFromLine(lineIndex, sourceCodeArr, regex, strategy, colorArr);
+        });
 
         return colorArr;
     }
