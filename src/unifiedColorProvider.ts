@@ -11,9 +11,9 @@ import {
 import { sendTrackingEvent } from "./tracking";
 import { TelemetryEnum } from "./enum/telemetry.enum";
 import { TelemetryTypeEnum } from "./enum/telemetryType.enum";
-import ColorStrategy from "./colorStratergy";
-import HexColorStrategy from "./hexColorStratergy";
-import FlutterColorStrategy from "./flutterColorStratergy";
+import { ColorStrategy } from "./colorStratergy/baseColorStratergy";
+import FlutterColorStrategy from "./colorStratergy/flutterColorStratergy";
+import HexColorStrategy from "./colorStratergy/hexColorStratergy";
 
 class UnifiedColorProvider implements DocumentColorProvider {
     private strategies: Map<string, ColorStrategy> = new Map();
@@ -47,7 +47,7 @@ class UnifiedColorProvider implements DocumentColorProvider {
         const sourceCodeArr = sourceCode.split('\n');
         const regex = strategy.getRegex();
 
-        sourceCodeArr.forEach((line, lineIndex) => {
+        sourceCodeArr.forEach((_, lineIndex) => {
             this.extractColorsFromLine(lineIndex, sourceCodeArr, regex, strategy, colorArr);
         });
 

@@ -1,5 +1,5 @@
 import { ExtensionContext, extensions, languages } from 'vscode';
-import UnifiedColorProvider from "./colorProvider";
+import UnifiedColorProvider from "./unifiedColorProvider";
 import { EXTENSION_ID } from './constant';
 import { activateTracking, sendTrackingEvent } from './tracking';
 import { TelemetryEnum } from './enum/telemetry.enum';

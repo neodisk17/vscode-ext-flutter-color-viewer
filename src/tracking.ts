@@ -11,7 +11,7 @@ import { PROXY_URL } from "./constant";
 export const activateTracking = async () => {
   const { machineId, isTelemetryEnabled } = env;
 
-  if (!isTelemetryEnabled) return
+  if (!isTelemetryEnabled) return;
 
   let baseDetails = getBaseTelemetryDetails();
 
@@ -28,7 +28,7 @@ export const activateTracking = async () => {
     });
 
   } catch (error) {
-    console.log("Error is ", error)
+    console.log("Error is ", error);
   }
 
 };

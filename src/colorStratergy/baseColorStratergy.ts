@@ -1,6 +1,10 @@
 import { Color } from "vscode";
-import ColorStrategy from "./colorStratergy";
 
+export interface ColorStrategy {
+    getRegex(): RegExp;
+    parseColor(match: string): { r: number, g: number, b: number, o: number };
+    formatColor(color: Color): string;
+}
 
 abstract class BaseColorStrategy implements ColorStrategy {
     abstract getRegex(): RegExp;
