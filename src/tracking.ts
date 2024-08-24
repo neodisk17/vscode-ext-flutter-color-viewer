@@ -11,7 +11,7 @@ import { PROXY_URL } from "./constant";
 export const activateTracking = async () => {
   const { machineId, isTelemetryEnabled } = env;
 
-  if (!isTelemetryEnabled) return
+  if (!isTelemetryEnabled) return;
 
   let baseDetails = getBaseTelemetryDetails();
 
@@ -28,65 +28,43 @@ export const activateTracking = async () => {
     });
 
   } catch (error) {
-    console.log("Error is ", error)
+    console.log("Error is ", error);
   }
 
 };
 
 export const sendTrackingEvent = async (trackingEvent: TelemetryEnum, data: any, telemetryType?: TelemetryTypeEnum) => {
-  const { machineId, isTelemetryEnabled } = env;
+    const { machineId, isTelemetryEnabled } = env;
 
-  if (!isTelemetryEnabled) return
+    if (!isTelemetryEnabled) return;
 
-  let trackingData = {
-    ...data
-  };
-  let additionalDetails = {};
+    const getAdditionalDetails = () => {
+        switch (telemetryType) {
+            case TelemetryTypeEnum.base:
+                return getBaseTelemetryDetails();
+            case TelemetryTypeEnum.editor:
+                return getEditorTelemetryDetails();
+            case TelemetryTypeEnum.both:
+                return { ...getBaseTelemetryDetails(), ...getEditorTelemetryDetails() };
+            default:
+                return {};
+        }
+    };
 
-  switch (telemetryType) {
-
-    case TelemetryTypeEnum.base:
-      additionalDetails = getBaseTelemetryDetails();
-      trackingData = {
-        ...trackingData,
-        ...additionalDetails
-      };
-      break;
-
-    case TelemetryTypeEnum.editor:
-      additionalDetails = getEditorTelemetryDetails();
-      trackingData = {
-        ...trackingData,
-        ...additionalDetails
-      };
-      break;
-
-    case TelemetryTypeEnum.both:
-      additionalDetails = getBaseTelemetryDetails();
-      const editorDetails = getEditorTelemetryDetails();
-      trackingData = {
-        ...trackingData,
-        ...additionalDetails,
-        ...editorDetails
-      };
-      break;
-  }
-
-  trackingData = convertCamelToSnakeCase(trackingData);
-
-  try {
-
-    await fetch(`${PROXY_URL}`, {
-      method: 'post',
-      body: JSON.stringify({
-        ...trackingData,
+    const trackingData = convertCamelToSnakeCase({
+        ...data,
+        ...getAdditionalDetails(),
         distinct_id: machineId,
         tracking_event: trackingEvent,
-      }),
-      headers: { 'Content-Type': 'application/json' }
     });
 
-  } catch (error) {
-    console.log("Error is ", error);
-  }
+    try {
+        await fetch(PROXY_URL, {
+            method: 'post',
+            body: JSON.stringify(trackingData),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    } catch (error) {
+        console.log("Error is ", error);
+    }
 };
