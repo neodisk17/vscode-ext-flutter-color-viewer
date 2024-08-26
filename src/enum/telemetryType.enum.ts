@@ -1,5 +1,5 @@
 export enum TelemetryTypeEnum {
-    base = 'base',
-    editor = 'editor',
-    both = 'both'
+  base = "base",
+  editor = "editor",
+  both = "both",
 }

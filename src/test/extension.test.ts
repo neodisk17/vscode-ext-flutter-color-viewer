@@ -1,25 +1,35 @@
-import * as assert from 'assert';
-import * as vscode from 'vscode';
-import * as myExtension from '../extension';
+import * as assert from "assert";
+import * as vscode from "vscode";
+import * as myExtension from "../extension";
 
-suite('Extension Test Suite', () => {
-    vscode.window.showInformationMessage('Start all tests.');
+interface MockExtensionContext {
+  subscriptions: unknown[];
+  globalState: {
+    get: () => unknown;
+    update: () => void;
+  };
+}
 
-    test('Extension should be present', () => {
-        assert.ok(vscode.extensions.getExtension('circlecodesolution.ccs-flutter-color'));
-    });
+const context: MockExtensionContext = {
+  subscriptions: [],
+  globalState: {
+    get: () => {},
+    update: () => {},
+  },
+};
 
-    test('Activation function should register color provider', async () => {
-        const context = {
-            subscriptions: [],
-            globalState: {
-                get: () => {},
-                update: () => {}
-            }
-        } as any;
+suite("Extension Test Suite", () => {
+  vscode.window.showInformationMessage("Start all tests.");
 
-        await myExtension.activate(context);
+  test("Extension should be present", () => {
+    assert.ok(
+      vscode.extensions.getExtension("circlecodesolution.ccs-flutter-color")
+    );
+  });
 
-        assert.strictEqual(context.subscriptions.length, 1);
-    });
+  test("Activation function should register color provider", async () => {
+    await myExtension.activate(context);
+
+    assert.strictEqual(context.subscriptions.length, 1);
+  });
 });
