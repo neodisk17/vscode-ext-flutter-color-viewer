@@ -1,7 +1,7 @@
 import { Color } from "vscode";
 import BaseColorStrategy from "./baseColorStratergy";
 
-class HexColorStrategy extends BaseColorStrategy {
+class ARGBColorStrategy extends BaseColorStrategy {
   getRegex(): RegExp {
     return /(#[a-f0-9A-F]{6,8})/;
   }
@@ -15,7 +15,7 @@ class HexColorStrategy extends BaseColorStrategy {
     if (hex.length === 6) {
       return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: 255 };
     }
-    return { r: arrByte[0], g: arrByte[1], b: arrByte[2], o: arrByte[3] };
+    return { r: arrByte[1], g: arrByte[2], b: arrByte[3], o: arrByte[0] };
   }
 
   protected formatColorLabel(
@@ -23,14 +23,14 @@ class HexColorStrategy extends BaseColorStrategy {
     color: Color
   ): string {
     const colorLabel =
-      color.alpha === 255
+      color.alpha === 0
         ? `${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}`
-        : `${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}${toHex(
-            color.alpha
+        : `${toHex(color.alpha)}${toHex(color.red)}${toHex(color.green)}${toHex(
+            color.blue
           )}`;
 
     return "#" + colorLabel.toUpperCase();
   }
 }
 
-export default HexColorStrategy;
+export default ARGBColorStrategy;
