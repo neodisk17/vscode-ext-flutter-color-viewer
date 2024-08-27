@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Start xvfb (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          /usr/bin/Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          echo ">>> Started xvfb"
+        shell: bash
+
+      - name: Run Tests
+        run: npm test
+        env:
+          DISPLAY: ":99.0"
+        shell: bash
+
+      - name: Run linting
+        run: npm run lint
