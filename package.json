@@ -2,7 +2,7 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to visualize the colors used in your project.",
-	"version": "2.0.0",
+	"version": "1.2.5",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
