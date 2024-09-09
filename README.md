@@ -17,13 +17,13 @@ A user-friendly plugin to help you visualize the colors used in your project. In
 <br/>
 
 Dear All,<br/>
-On celeberation of successfull landing of changrayaan 3, I decided to make few structural changes in the plugin last year, so that new features can be easily developed. Today, I am excited to deliver on those promises. The following updates have been implemented in the plugin:
+Last year on celeberation of successfull landing of changrayaan 3, I decided to make few structural changes in the plugin, so that new features can be easily developed.Today, I’m excited to announce that these changes have been successfully implemented. Here’s what’s new:
 
 1. Implemented Telemetry & Crash Reporting 📊
 2. Added test cases ✅
-3. Refactored code where necessary 🔧
+3. Refactored code 🔧
 
-If you haven't used this plugin, feel free to go to you VS Code -> Extensions -> search for "Flutter Color" -> Install it and start using it. Do let me know your thoughts on it.
+If you haven't tried this plugin yet, head over to VS Code -> Extensions -> search for "Flutter Color" -> Install and start using it! I’d love to hear your feedback.
 
 # Upcoming Features
 
