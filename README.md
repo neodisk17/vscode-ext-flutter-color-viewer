@@ -4,7 +4,7 @@
 
 # Welcome to Flutter Color VS Code Extension 🎨✨
 
-A user-friendly plugin to help you visualize the colors used in your project. Initially developed for Flutter, it is now used in various programming languages. It automatically parses and converts your color code into a small color picker box, allowing you to see and change the color as desired. 
+A user-friendly plugin to help you visualize the colors used in your project. Initially developed for Flutter, it is now used in various programming languages. It automatically parses and converts your color code into a small color picker box, allowing you to see and change the color as desired.
 <br/>
 <br/>
 
@@ -17,13 +17,20 @@ A user-friendly plugin to help you visualize the colors used in your project. In
 <br/>
 
 Dear All,<br/>
-To celebrate the successful landing of Chandrayaan 3, we announced a few updates to our plugin last year. Today, we are excited to deliver on those promises. The following updates have been implemented in the plugin:
+On celeberation of successfull landing of changrayaan 3, I decided to make few structural changes in the plugin last year, so that new features can be easily developed. Today, I am excited to deliver on those promises. The following updates have been implemented in the plugin:
 
 1. Implemented Telemetry & Crash Reporting 📊
 2. Added test cases ✅
 3. Refactored code where necessary 🔧
 
-I hope you like this plugin! If you have any new ideas to implement, please feel free to create an issue in the repo. 💡
+If you haven't used this plugin, feel free to go to you VS Code -> Extensions -> search for "Flutter Color" -> Install it and start using it. Do let me know your thoughts on it.
+
+Next features I am planning to implement
+
+1. Enable users to convert color codes between various formats such as RGBA, HEX, RGB, ARGB, etc. For example, users can input a HEX code, and the plugin will convert it to the RGBA format.
+2. \_************\_\_\_\_************
+
+Feel free to add your thoughts as well. You can follow this link to send me your ideas directly - [Your Idea](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=)
 
 ## Features
 
@@ -50,7 +57,7 @@ Feel free to contribute. Any new ideas are accepted, if you want to contribute, 
 
 ## What's new ?
 
-- ### Version 2.0.0 (08.09.2023)
+- ### Version 2.0.0 (09.09.2024)
 
   - **_[New]_** `Refactor the code, Added Test cases, Implemented Telemetry & crash reporting` [[#Milestone 1 - 2023 Last Quarter Release
     ](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/milestone/1)].

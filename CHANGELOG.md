@@ -2,7 +2,7 @@
 
 | Version | Date       | Changelog                                                                                                                                                                                                       |
 | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 2.0.0   | 08.09.2024 | Refactor the code, Added Test cases, Implemented Telementry & crash reporting. Completed [[#Milestone 1 - 2023 Last Quarter Release](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/milestone/1)]
+| 2.0.0   | 09.09.2024 | Refactor the code, Added Test cases, Implemented Telementry & crash reporting. Completed [[#Milestone 1 - 2023 Last Quarter Release](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/milestone/1)]
 |1.2.5 | 24.07.2024 | Fixed security vulnerablility of braces(https://github.com/micromatch/braces) and updated readme images
 |1.2.0 | 20.09.2023 | Added data analysis while prioritizing and safeguarding user privacy.
 |1.1.1 | 26.08.2023 | Updated Readme:- Added next stages of the Plugin.
