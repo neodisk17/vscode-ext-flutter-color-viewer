@@ -25,12 +25,12 @@ On celeberation of successfull landing of changrayaan 3, I decided to make few s
 
 If you haven't used this plugin, feel free to go to you VS Code -> Extensions -> search for "Flutter Color" -> Install it and start using it. Do let me know your thoughts on it.
 
-Next features I am planning to implement
+# Upcoming Features
 
 1. Enable users to convert color codes between various formats such as RGBA, HEX, RGB, ARGB, etc. For example, users can input a HEX code, and the plugin will convert it to the RGBA format.
-2. \_************\_\_\_\_************
+2. \______________________________________________
 
-Feel free to add your thoughts as well. You can follow this link to send me your ideas directly - [Your Idea](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=)
+Feel free to add your thoughts as well. You can follow this link to share your ideas directly - [Your Idea](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=)
 
 ## Features
 
