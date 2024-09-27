@@ -1,4 +1,6 @@
 import { Color } from "vscode";
+
+import formatHexString from "../utils/formatHexString";
 import BaseColorStrategy from "./baseColorStratergy";
 
 class HexColorStrategy extends BaseColorStrategy {
@@ -29,7 +31,7 @@ class HexColorStrategy extends BaseColorStrategy {
             color.alpha
           )}`;
 
-    return "#" + colorLabel.toUpperCase();
+    return "#" + formatHexString(colorLabel);
   }
 }
 
