@@ -1,4 +1,6 @@
 import { Color } from "vscode";
+
+import formatHexString from "../utils/formatHexString";
 import BaseColorStrategy from "./baseColorStratergy";
 
 class ARGBColorStrategy extends BaseColorStrategy {
@@ -29,7 +31,7 @@ class ARGBColorStrategy extends BaseColorStrategy {
             color.blue
           )}`;
 
-    return "#" + colorLabel.toUpperCase();
+    return "#" + formatHexString(colorLabel);
   }
 }
 

@@ -1,4 +1,6 @@
 import { Color } from "vscode";
+
+import formatHexString from "../utils/formatHexString";
 import BaseColorStrategy from "./baseColorStratergy";
 
 class FlutterColorStrategy extends BaseColorStrategy {
@@ -16,7 +18,7 @@ class FlutterColorStrategy extends BaseColorStrategy {
 
     protected formatColorLabel(toHex: (value: number) => string, color: Color): string {
         const colorLabel = `${toHex(color.alpha)}${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}`;
-        return '0x' + colorLabel.toUpperCase();
+        return "0x" + formatHexString(colorLabel);
     }
 }
 
