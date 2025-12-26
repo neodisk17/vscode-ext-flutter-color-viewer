@@ -1,6 +1,7 @@
 [![CodeQL](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/github-code-scanning/codeql/badge.svg?branch=master)](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/github-code-scanning/codeql)
 [![Release](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/main.yml)
 [![Tests](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/test.yml/badge.svg)](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/neodisk17/vscode-ext-flutter-color-viewer/branch/master/graph/badge.svg)](https://codecov.io/gh/neodisk17/vscode-ext-flutter-color-viewer)
 
 # Welcome to Flutter Color VS Code Extension 🎨✨
 
