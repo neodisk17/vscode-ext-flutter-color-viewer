@@ -1,4 +1,6 @@
 name: Release
+permissions:
+  contents: read
 on:
   release:
     types:
@@ -91,6 +93,8 @@ jobs:
   publishGH:
     name: Publish to GitHub releases
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: package
     if: github.event.inputs.publishGH == 'true'
     steps:
