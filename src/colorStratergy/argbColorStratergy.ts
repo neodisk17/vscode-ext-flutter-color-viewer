@@ -25,7 +25,7 @@ class ARGBColorStrategy extends BaseColorStrategy {
     color: Color
   ): string {
     const colorLabel =
-      color.alpha === 0
+      color.alpha === 1
         ? `${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}`
         : `${toHex(color.alpha)}${toHex(color.red)}${toHex(color.green)}${toHex(
             color.blue

@@ -25,7 +25,7 @@ class HexColorStrategy extends BaseColorStrategy {
     color: Color
   ): string {
     const colorLabel =
-      color.alpha === 255
+      color.alpha === 1
         ? `${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}`
         : `${toHex(color.red)}${toHex(color.green)}${toHex(color.blue)}${toHex(
             color.alpha
