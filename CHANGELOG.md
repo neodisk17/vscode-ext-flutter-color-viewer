@@ -2,6 +2,7 @@
 
 | Version | Date       | Changelog                                                                                                                                                                                                       |
 | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.1.0   | 26.12.2025 | **_[New]_** Added configuration settings for hex format (uppercase/lowercase) and alpha channel display [[#67](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/67), [PR #63](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/63)].<br>**_[Fixed]_** Corrected alpha channel comparison in HexColorStrategy and ARGBColorStrategy. |
 | 2.0.0   | 09.09.2024 | Refactor the code, Added Test cases, Implemented Telementry & crash reporting. Completed [[#Milestone 1 - 2023 Last Quarter Release](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/milestone/1)]
 |1.2.5 | 24.07.2024 | Fixed security vulnerablility of braces(https://github.com/micromatch/braces) and updated readme images
 |1.2.0 | 20.09.2023 | Added data analysis while prioritizing and safeguarding user privacy.
