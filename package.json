@@ -2,13 +2,13 @@
 	"name": "ccs-flutter-color",
 	"displayName": "Flutter Color",
 	"description": "This plugin help you to visualize the colors used in your project.",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"publisher": "circlecodesolution",
 	"keywords": [
 		"futlter",
 		"dart",
 		"color",
-		"andriod",
+		"android",
 		"ios",
 		"yml",
 		"json"
@@ -58,6 +58,26 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"configuration": {
+			"title": "Flutter Color",
+			"type": "object",
+			"properties": {
+				"flutterColor.hexFormat": {
+					"type": "string",
+					"enum": [
+						"lower case",
+						"upper case"
+					],
+					"default": "upper case",
+					"description": "Case for letters in hex strings"
+				},
+				"flutterColor.includeAlpha": {
+					"type": "boolean",
+					"default": true,
+					"description": "Include alpha channel in color preview"
+				}
+			}
+		},
 		"commands": []
 	},
 	"homepage": "https://github.com/neodisk17/vscode-ext-flutter-color-viewer/blob/master/README.md",

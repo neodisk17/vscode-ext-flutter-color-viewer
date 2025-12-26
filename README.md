@@ -55,7 +55,100 @@ Gif by [Maruf Hassan](https://medium.com/@maruf.hassan) on [Medium](https://medi
 ![With Flutter Color](https://flutter-color.s3.ap-south-1.amazonaws.com/with-plugin-json.jpg)
 Feel free to contribute. Any new ideas are accepted, if you want to contribute, submit a pull request
 
+## Configuration
+
+Flutter Color provides customizable settings to match your coding style preferences. Access these settings in VS Code:
+
+`File > Preferences > Settings` (or `Code > Settings > Settings` on macOS) → Search for "Flutter Color"
+
+### Available Settings
+
+#### Hex Format (`flutterColor.hexFormat`)
+
+Control the letter case for hexadecimal color values.
+
+- **Options**:
+  - `"upper case"` (default) - Display hex values in uppercase (e.g., `#FF5733`)
+  - `"lower case"` - Display hex values in lowercase (e.g., `#ff5733`)
+
+**Example Configuration:**
+```json
+{
+  "flutterColor.hexFormat": "lower case"
+}
+```
+
+**Before** (upper case):
+```dart
+Color(0xFF1A334D)
+```
+
+**After** (lower case):
+```dart
+Color(0xff1a334d)
+```
+
+#### Include Alpha Channel (`flutterColor.includeAlpha`)
+
+Control whether to display the alpha (transparency) channel in color previews.
+
+- **Type**: Boolean
+- **Default**: `true`
+- **Effect**: When `false`, the alpha channel is omitted from displayed color values
+
+**Example Configuration:**
+```json
+{
+  "flutterColor.includeAlpha": false
+}
+```
+
+**Before** (includeAlpha: true):
+```dart
+Color(0xFF1A334D)  // Shows full 8-digit hex with alpha (FF)
+```
+
+**After** (includeAlpha: false):
+```dart
+Color(0x1A334D)    // Alpha channel omitted (6-digit hex)
+```
+
+### Applying Settings to Your Workspace
+
+You can configure these settings at different levels:
+
+**User Settings** (applies globally):
+```json
+{
+  "flutterColor.hexFormat": "lower case",
+  "flutterColor.includeAlpha": true
+}
+```
+
+**Workspace Settings** (applies to current project only):
+Create or edit `.vscode/settings.json` in your project root:
+```json
+{
+  "flutterColor.hexFormat": "upper case",
+  "flutterColor.includeAlpha": false
+}
+```
+
+### Supported Color Formats
+
+These settings apply to all supported color formats:
+- Flutter/Dart: `Color(0xFF123456)`, `Color.fromARGB(255, 18, 52, 86)`
+- Hex: `#123456`, `#FF123456`
+- ARGB: `#AARRGGBB`
+- JSON: Color values in `.json` files
+- JavaScript/TypeScript: Color values in `.js`, `.ts` files
+
 ## What's new ?
+
+- ### Version 2.1.0 (26.12.2025)
+
+  - **_[New]_** `Added configuration settings to customize hex format (uppercase/lowercase) and control alpha channel display` [[#67](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/67), [PR #63](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/63)]
+  - **_[Fixed]_** `Corrected alpha channel handling in color strategies for proper opacity detection`
 
 - ### Version 2.0.0 (09.09.2024)
 
