@@ -43,6 +43,14 @@ jobs:
       - name: Run linting
         run: npm run lint
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
   scan:
     name: gitleaks
     runs-on: ubuntu-latest
