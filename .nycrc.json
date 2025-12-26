@@ -18,7 +18,8 @@
     "reporter": [
         "text",
         "html",
-        "json"
+        "json",
+        "lcov"
     ],
     "sourceMap": true,
     "instrument": true
