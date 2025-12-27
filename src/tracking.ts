@@ -1,12 +1,15 @@
 import convertCamelToSnakeCase from "./utils/convertCamelToSnakeCase";
 import getBaseTelemetryDetails from "./utils/getBaseTelemetryDetails";
 import getEditorTelemetryDetails from "./utils/getEditorTelemetryDetails";
-// import fetch from 'node-fetch';
 
 import { env } from 'vscode';
 import { TelemetryEnum } from "./enum/telemetry.enum";
 import { TelemetryTypeEnum } from "./enum/telemetryType.enum";
-import { PROXY_URL } from "./constant";
+import { TRACKING_ID } from "./constant";
+
+const mixpanel = require('mixpanel');
+
+const mp = mixpanel.init(TRACKING_ID, { debug: true });
 
 export const activateTracking = async () => {
   const { machineId, isTelemetryEnabled } = env;
@@ -14,23 +17,13 @@ export const activateTracking = async () => {
   if (!isTelemetryEnabled) {return;}
 
   let baseDetails = getBaseTelemetryDetails();
-
   baseDetails = convertCamelToSnakeCase(baseDetails);
 
   try {
-    // await fetch(`${PROXY_URL}/intro`, {
-    //   method: 'post',
-    //   body: JSON.stringify({
-    //     ...baseDetails,
-    //     machine_id: machineId
-    //   }),
-    //   headers: { 'Content-Type': 'application/json' }
-    // });
-
+    mp.people.set(machineId, baseDetails);
   } catch (error) {
-    console.log("Error is ", error);
+    console.error("Error in activateTracking: ", error);
   }
-
 };
 
 export const sendTrackingEvent = async (trackingEvent: TelemetryEnum, data: any, telemetryType?: TelemetryTypeEnum) => {
@@ -56,17 +49,12 @@ export const sendTrackingEvent = async (trackingEvent: TelemetryEnum, data: any,
         ...getAdditionalDetails(),
         // eslint-disable-next-line @typescript-eslint/naming-convention
         "distinct_id": machineId,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        "tracking_event": trackingEvent,
     });
 
     try {
-        // await fetch(PROXY_URL, {
-        //     method: 'post',
-        //     body: JSON.stringify(trackingData),
-        //     headers: { 'Content-Type': 'application/json' }
-        // });
+        mp.track(trackingEvent,trackingData);
+      
     } catch (error) {
-        console.log("Error is ", error);
+        console.error("Error is ", error);
     }
 };

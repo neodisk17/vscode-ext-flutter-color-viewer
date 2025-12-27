@@ -114,5 +114,8 @@
 	"announcement": {
 		"onVersion": "2.0.0",
 		"message": "[NEW] Refactor the code, Added Test cases, Implemented Telementry & crash reporting"
+	},
+	"dependencies": {
+		"mixpanel": "^0.19.1"
 	}
 }
