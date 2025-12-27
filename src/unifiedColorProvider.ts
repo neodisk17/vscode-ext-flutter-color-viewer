@@ -7,6 +7,7 @@ import {
   ColorInformation,
   Range,
   Position,
+  workspace,
 } from "vscode";
 import { sendTrackingEvent } from "./tracking";
 import { TelemetryEnum } from "./enum/telemetry.enum";
@@ -15,6 +16,7 @@ import { ColorStrategy } from "./colorStratergy/baseColorStratergy";
 import FlutterColorStrategy from "./colorStratergy/flutterColorStratergy";
 import HexColorStrategy from "./colorStratergy/hexColorStratergy";
 import ARGBColorStrategy from "./colorStratergy/argbColorStratergy";
+import RGBColorStrategy from "./colorStratergy/rgbColorStratergy";
 
 class UnifiedColorProvider implements DocumentColorProvider {
   private strategies: Map<string, ColorStrategy> = new Map();
@@ -23,20 +25,32 @@ class UnifiedColorProvider implements DocumentColorProvider {
     this.strategies.set("default", new HexColorStrategy());
     this.strategies.set("flutter", new FlutterColorStrategy());
     this.strategies.set("argb", new ARGBColorStrategy());
+    this.strategies.set("rgb", new RGBColorStrategy());
   }
 
-  private getStrategy(document: TextDocument): ColorStrategy {
+  private getStrategies(document: TextDocument): ColorStrategy[] {
+    const strategies: ColorStrategy[] = [];
     const languageId = document.languageId;
-    let colorStrategy;
+
+    // Add language-specific strategy first
     switch (languageId) {
       case "dart":
-        colorStrategy = this.strategies.get("flutter");
+        strategies.push(this.strategies.get("flutter")!);
         break;
       case "qml":
-        colorStrategy = this.strategies.get("argb");
+        strategies.push(this.strategies.get("argb")!);
         break;
+      default:
+        strategies.push(this.strategies.get("default")!);
     }
-    return colorStrategy || this.strategies.get("default")!;
+
+    // Always add RGB strategy for all languages
+    const config = workspace.getConfiguration();
+    if (config.get("flutterColor.enableRgbSupport", true)) {
+      strategies.push(this.strategies.get("rgb")!);
+    }
+
+    return strategies;
   }
 
   provideDocumentColors(
@@ -47,8 +61,8 @@ class UnifiedColorProvider implements DocumentColorProvider {
       return;
     }
 
-    const strategy = this.getStrategy(document);
-    const colorArr = this.extractColors(document, strategy);
+    const strategies = this.getStrategies(document);
+    const colorArr = this.extractColors(document, strategies);
 
     this.sendTrackingEvent(document, colorArr);
 
@@ -57,24 +71,29 @@ class UnifiedColorProvider implements DocumentColorProvider {
 
   private extractColors(
     document: TextDocument,
-    strategy: ColorStrategy
+    strategies: ColorStrategy[]
   ): ColorInformation[] {
     const colorArr: ColorInformation[] = [];
     const sourceCode = document.getText();
-    const sourceCodeArr = sourceCode.split("\n");
-    const regex = strategy.getRegex();
 
-    sourceCodeArr.forEach((_, lineIndex) => {
-      this.extractColorsFromLine(
-        lineIndex,
-        sourceCodeArr,
-        regex,
-        strategy,
-        colorArr
-      );
+    // Extract colors using all strategies
+    strategies.forEach((strategy) => {
+      const regex = strategy.getRegex();
+      const sourceCodeArr = sourceCode.split("\n");
+
+      sourceCodeArr.forEach((_, lineIndex) => {
+        this.extractColorsFromLine(
+          lineIndex,
+          sourceCodeArr,
+          regex,
+          strategy,
+          colorArr
+        );
+      });
     });
 
-    return colorArr;
+    // Deduplicate colors at the same position
+    return this.deduplicateColors(colorArr);
   }
 
   private extractColorsFromLine(
@@ -110,6 +129,23 @@ class UnifiedColorProvider implements DocumentColorProvider {
     }
   }
 
+  /**
+   * Removes duplicate colors at the same position
+   * When multiple strategies match the same color, keep only the first one
+   */
+  private deduplicateColors(colors: ColorInformation[]): ColorInformation[] {
+    const seen = new Map<string, ColorInformation>();
+
+    colors.forEach((color) => {
+      const key = `${color.range.start.line}:${color.range.start.character}`;
+      if (!seen.has(key)) {
+        seen.set(key, color);
+      }
+    });
+
+    return Array.from(seen.values());
+  }
+
   private sendTrackingEvent(
     document: TextDocument,
     colorArr: ColorInformation[]
@@ -128,9 +164,16 @@ class UnifiedColorProvider implements DocumentColorProvider {
     color: Color,
     context: { document: TextDocument }
   ): ProviderResult<ColorPresentation[]> {
-    const strategy = this.getStrategy(context.document);
-    const colorLabel = strategy.formatColor(color);
-    return [new ColorPresentation(colorLabel)];
+    const strategies = this.getStrategies(context.document);
+    const presentations: ColorPresentation[] = [];
+
+    // Create a color presentation for each strategy
+    strategies.forEach((strategy) => {
+      const colorLabel = strategy.formatColor(color);
+      presentations.push(new ColorPresentation(colorLabel));
+    });
+
+    return presentations;
   }
 }
 

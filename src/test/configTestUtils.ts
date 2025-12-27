@@ -9,6 +9,8 @@ let currentSandbox: sinon.SinonSandbox | null = null;
 export interface ConfigMockOptions {
   hexFormat?: "lower case" | "upper case";
   includeAlpha?: boolean;
+  enableRgbSupport?: boolean;
+  rgbSpacing?: "compact" | "spaced";
 }
 
 /**
@@ -33,6 +35,12 @@ export function mockWorkspaceConfiguration(
     }
     if (key === "flutterColor.includeAlpha") {
       return options.includeAlpha !== undefined ? options.includeAlpha : true;
+    }
+    if (key === "flutterColor.enableRgbSupport") {
+      return options.enableRgbSupport !== undefined ? options.enableRgbSupport : true;
+    }
+    if (key === "flutterColor.rgbSpacing") {
+      return options.rgbSpacing ?? "spaced";
     }
     return undefined;
   });

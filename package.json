@@ -75,6 +75,24 @@
 					"type": "boolean",
 					"default": true,
 					"description": "Include alpha channel in color preview"
+				},
+				"flutterColor.enableRgbSupport": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable RGB/RGBA color format detection and conversion"
+				},
+				"flutterColor.rgbSpacing": {
+					"type": "string",
+					"enum": [
+						"compact",
+						"spaced"
+					],
+					"default": "spaced",
+					"enumDescriptions": [
+						"rgb(255,0,0) - No spaces",
+						"rgb(255, 0, 0) - Spaces after commas"
+					],
+					"description": "Spacing style for RGB/RGBA output format"
 				}
 			}
 		},
@@ -97,8 +115,8 @@
 		"@types/node": "16.x",
 		"@types/sinon": "^17.0.3",
 		"@types/vscode": "^1.81.0",
-		"@typescript-eslint/eslint-plugin": "^6.4.1",
-		"@typescript-eslint/parser": "^6.4.1",
+		"@typescript-eslint/eslint-plugin": "^7.0.0",
+		"@typescript-eslint/parser": "^7.0.0",
 		"@vscode/test-electron": "^2.4.1",
 		"eslint": "^8.47.0",
 		"glob": "^10.5.0",
@@ -107,7 +125,7 @@
 		"sinon": "^18.0.0",
 		"ts-loader": "^9.4.4",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.1.6",
+		"typescript": "^5.5.4",
 		"webpack": "^5.94.0",
 		"webpack-cli": "^5.1.4"
 	},

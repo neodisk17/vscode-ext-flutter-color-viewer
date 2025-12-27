@@ -1,11 +1,12 @@
 import { Color } from "vscode";
 
+import { HEX_COLOR_REGEX } from "../constant";
 import formatHexString from "../utils/formatHexString";
 import BaseColorStrategy from "./baseColorStratergy";
 
 class HexColorStrategy extends BaseColorStrategy {
   getRegex(): RegExp {
-    return /(#[a-f0-9A-F]{6,8})/;
+    return HEX_COLOR_REGEX;
   }
 
   parseColor(match: string): { r: number; g: number; b: number; o: number } {
