@@ -3,6 +3,7 @@ import { Color } from "vscode";
 import HexColorStrategy from "../colorStratergy/hexColorStratergy";
 import FlutterColorStrategy from "../colorStratergy/flutterColorStratergy";
 import ARGBColorStrategy from "../colorStratergy/argbColorStratergy";
+import RGBColorStrategy from "../colorStratergy/rgbColorStratergy";
 import {
   mockWorkspaceConfiguration,
   restoreWorkspaceConfiguration,
@@ -258,6 +259,151 @@ suite("ColorStrategy Test Suite", () => {
       assert.strictEqual(result, "#00ffffff");
 
       restoreWorkspaceConfiguration(stub);
+    });
+  });
+
+  suite("RGBColorStrategy", () => {
+    test("should parse rgb format with spaces correctly", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgb(255, 0, 0)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 255 });
+    });
+
+    test("should parse rgb format without spaces correctly", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgb(255,0,0)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 255 });
+    });
+
+    test("should parse rgba format with alpha correctly", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgba(255, 0, 0, 0.5)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 128 });
+    });
+
+    test("should parse rgba format with full opacity correctly", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgba(255, 0, 0, 1)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 255 });
+    });
+
+    test("should parse rgba format with zero opacity correctly", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgba(255, 0, 0, 0)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 0 });
+    });
+
+    test("should parse rgba format with decimal alpha without leading zero", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgba(255, 0, 0, .5)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 128 });
+    });
+
+    test("should clamp RGB values above 255", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgb(300, 0, 0)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 255 });
+    });
+
+    test("should clamp alpha values above 1", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgba(255, 0, 0, 1.5)");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 0, b: 0, o: 255 });
+    });
+
+    test("should format fully opaque colors as rgb()", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 0, 0, 1));
+      assert.strictEqual(result, "rgb(255, 0, 0)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should format transparent colors as rgba()", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 0, 0, 0.5));
+      assert.strictEqual(result, "rgba(255, 0, 0, 0.5)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should format colors with compact spacing", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "compact" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 0, 0, 1));
+      assert.strictEqual(result, "rgb(255,0,0)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should format colors with spaced spacing (default)", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(0.5, 0.5, 0.5, 1));
+      assert.strictEqual(result, "rgb(128, 128, 128)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should handle edge case: fully transparent black", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(0, 0, 0, 0));
+      assert.strictEqual(result, "rgba(0, 0, 0, 0)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should handle edge case: fully opaque white", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 1, 1, 1));
+      assert.strictEqual(result, "rgb(255, 255, 255)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should round alpha values to 2 decimal places", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 0, 0, 0.333333));
+      assert.strictEqual(result, "rgba(255, 0, 0, 0.33)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should remove trailing zeros from alpha", () => {
+      const stub = mockWorkspaceConfiguration({ rgbSpacing: "spaced" });
+      const strategy = new RGBColorStrategy();
+
+      const result = strategy.formatColor(new Color(1, 0, 0, 0.5));
+      assert.strictEqual(result, "rgba(255, 0, 0, 0.5)");
+
+      restoreWorkspaceConfiguration(stub);
+    });
+
+    test("should parse mixed RGB values with different spacing", () => {
+      const strategy = new RGBColorStrategy();
+
+      const parsedColor = strategy.parseColor("rgb( 255 , 128 , 64 )");
+      assert.deepStrictEqual(parsedColor, { r: 255, g: 128, b: 64, o: 255 });
     });
   });
 });
