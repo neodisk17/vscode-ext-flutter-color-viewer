@@ -146,6 +146,10 @@ These settings apply to all supported color formats:
 
 ## What's new ?
 
+- ### Version 2.2.0 (32.12.2025)
+
+  - **_[Fixed]_** `Added configuration of RGB value on colour picker [[Issue #7](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/7), [PR #79](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/79)]`
+
 - ### Version 2.1.0 (26.12.2025)
 
   - **_[New]_** `Added configuration settings to customize hex format (uppercase/lowercase) and control alpha channel display` [[#67](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/67), [PR #63](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/63)]
