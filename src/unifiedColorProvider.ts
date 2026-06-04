@@ -31,17 +31,22 @@ class UnifiedColorProvider implements DocumentColorProvider {
   private getStrategies(document: TextDocument): ColorStrategy[] {
     const strategies: ColorStrategy[] = [];
     const languageId = document.languageId;
+    const isKotlin = languageId === "kotlin" || document.fileName?.endsWith(".kt") || document.fileName?.endsWith(".kts");
 
     // Add language-specific strategy first
-    switch (languageId) {
-      case "dart":
-        strategies.push(this.strategies.get("flutter")!);
-        break;
-      case "qml":
-        strategies.push(this.strategies.get("argb")!);
-        break;
-      default:
-        strategies.push(this.strategies.get("default")!);
+    if (isKotlin) {
+      strategies.push(this.strategies.get("flutter")!);
+    } else {
+      switch (languageId) {
+        case "dart":
+          strategies.push(this.strategies.get("flutter")!);
+          break;
+        case "qml":
+          strategies.push(this.strategies.get("argb")!);
+          break;
+        default:
+          strategies.push(this.strategies.get("default")!);
+      }
     }
 
     // Always add RGB strategy for all languages
