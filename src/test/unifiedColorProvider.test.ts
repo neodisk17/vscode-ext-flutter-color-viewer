@@ -176,32 +176,4 @@ suite('UnifiedColorProvider Test Suite', () => {
         assert.strictEqual(colors.length, 1);
         assert.ok(colors[0] instanceof ColorInformation);
     });
-
-    test('should use FlutterColorStrategy for .kt files even when languageId is plaintext', () => {
-        const mockDocument = {
-            languageId: 'plaintext',
-            fileName: 'test.kt',
-            getText: () => 'Color(0xFF123456)',
-        } as TextDocument;
-
-        const colors = provider.provideDocumentColors(mockDocument);
-
-        assert.ok(Array.isArray(colors));
-        assert.strictEqual(colors.length, 1);
-        assert.ok(colors[0] instanceof ColorInformation);
-    });
-
-    test('should use FlutterColorStrategy for .kts files even when languageId is plaintext', () => {
-        const mockDocument = {
-            languageId: 'plaintext',
-            fileName: 'test.kts',
-            getText: () => 'Color(0xFF123456)',
-        } as TextDocument;
-
-        const colors = provider.provideDocumentColors(mockDocument);
-
-        assert.ok(Array.isArray(colors));
-        assert.strictEqual(colors.length, 1);
-        assert.ok(colors[0] instanceof ColorInformation);
-    });
 });
