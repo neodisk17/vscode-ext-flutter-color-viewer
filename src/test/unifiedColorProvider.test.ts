@@ -163,4 +163,17 @@ suite('UnifiedColorProvider Test Suite', () => {
 
         restoreWorkspaceConfiguration(stub);
     });
+
+    test('should use FlutterColorStrategy for kotlin language', () => {
+        const mockDocument = {
+            languageId: 'kotlin',
+            getText: () => 'Color(0xFF123456)',
+        } as TextDocument;
+
+        const colors = provider.provideDocumentColors(mockDocument);
+
+        assert.ok(Array.isArray(colors));
+        assert.strictEqual(colors.length, 1);
+        assert.ok(colors[0] instanceof ColorInformation);
+    });
 });

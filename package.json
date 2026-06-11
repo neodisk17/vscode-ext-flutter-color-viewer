@@ -36,28 +36,39 @@
 	"categories": [
 		"Other"
 	],
-	"languages": [
-		{
-			"id": "dart",
-			"extensions": [
-				".dart",
-				".cs",
-				".js",
-				".json"
-			],
-			"aliases": [
-				"dart",
-				"cs",
-				"js",
-				"json"
-			]
-		}
-	],
 	"activationEvents": [
 		"onStartupFinished"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"languages": [
+			{
+				"id": "dart",
+				"extensions": [
+					".dart",
+					".cs",
+					".js",
+					".json"
+				],
+				"aliases": [
+					"dart",
+					"cs",
+					"js",
+					"json"
+				]
+			},
+			{
+				"id": "kotlin",
+				"extensions": [
+					".kt",
+					".kts"
+				],
+				"aliases": [
+					"Kotlin",
+					"kotlin"
+				]
+			}
+		],
 		"configuration": {
 			"title": "Flutter Color",
 			"type": "object",

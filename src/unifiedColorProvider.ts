@@ -35,6 +35,7 @@ class UnifiedColorProvider implements DocumentColorProvider {
     // Add language-specific strategy first
     switch (languageId) {
       case "dart":
+      case "kotlin":
         strategies.push(this.strategies.get("flutter")!);
         break;
       case "qml":

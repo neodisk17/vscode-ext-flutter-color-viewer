@@ -143,6 +143,7 @@ These settings apply to all supported color formats:
 - ARGB: `#AARRGGBB`
 - JSON: Color values in `.json` files
 - JavaScript/TypeScript: Color values in `.js`, `.ts` files
+- Kotlin/Android: Color values in `.kt`, `.kts` files
 
 ## What's new ?
 
