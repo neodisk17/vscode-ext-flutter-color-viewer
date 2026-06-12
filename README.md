@@ -147,6 +147,11 @@ These settings apply to all supported color formats:
 
 ## What's new ?
 
+- ### Version 2.3.0 (12.06.2026)
+
+  - **_[New]_** `Added support for Kotlin files` [[PR #88](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/88) - Thanks to [nihaltp](https://github.com/nihaltp)]
+  - **_[Security]_** `Updated dependencies (webpack, minimatch, flatted, picomatch, fast-uri, uuid, nyc) to fix security vulnerabilities`
+
 - ### Version 2.2.0 (32.12.2025)
 
   - **_[Fixed]_** `Added configuration of RGB value on colour picker [[Issue #7](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/issues/7), [PR #79](https://github.com/neodisk17/vscode-ext-flutter-color-viewer/pull/79)]`
